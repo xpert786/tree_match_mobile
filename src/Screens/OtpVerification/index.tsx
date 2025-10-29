@@ -30,6 +30,7 @@ import { postRequest } from '../../Network/apiClient';
 import { ApiConstants } from '../../Theme/ApiConstants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Toast } from 'toastify-react-native';
+import { saveToken } from '../../Theme/Helper';
 
 const CELL_COUNT = 4;
 
@@ -91,8 +92,8 @@ const OtpVerification = ({ navigation, route }: any) => {
     setLoading(false);
 
     if (response.status === 200 || response.status === 201) {
-      const token = response?.data?.data?.token
-      console.log("token in 200:", token);
+      const token = response?.data?.data?.tokens?.access
+      console.log("token in 200 in restApiToVerifyOtp:", token);
       
       saveToken(token)
       if (fromSignUpLogin) {
@@ -130,18 +131,6 @@ const OtpVerification = ({ navigation, route }: any) => {
     }
   };
    
-  const saveToken = async(token: string)=>{
-     try {
-      if (token) {
-        await AsyncStorage.setItem(StringConstants.ACCESS_TOKEN, token);
-        console.log('AccessToken saved successfully:', token);
-      } else {
-        console.warn('No AccessToken found in response');
-      }
-    } catch (error) {
-      console.error('Error saving AccessToken:', error);
-    }
-  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#212121' }}>

@@ -3,21 +3,49 @@ import { StyleSheet, View, StatusBar, Text, Image, ImageBackground } from 'react
 import { Images } from '../../Assets';
 import { ScreenConstants } from '../../Theme/ScreenConstants';
 import { CommonActions } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StringConstants } from '../../Theme/StringConstants';
 
 
 const Splash = ({navigation}: any) => {
 
- useEffect(() => {
-  const timer = setTimeout(() => {
-      navigation.dispatch(
-        CommonActions.reset({
-          index: 0,
-          routes: [{ name: ScreenConstants.LOGIN }],
-        })
-      );
-    }, 2000);
 
-    return () => clearTimeout(timer);
+useEffect(() => {
+    const checkTokenAndNavigate = async () => {
+      try {
+        // Wait for 2 seconds (to show splash)
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        const token = await AsyncStorage.getItem(StringConstants.ACCESS_TOKEN);
+        if (token) {
+          // Token exists → go to BottomTabNavigator
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: 'BottomTabNavigator' }],
+            })
+          );
+        } else {
+          // No token → go to Login
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 0,
+              routes: [{ name: ScreenConstants.LOGIN }],
+            })
+          );
+        }
+      } catch (error) {
+        console.error('Error checking token:', error);
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: ScreenConstants.LOGIN }],
+          })
+        );
+      }
+    };
+
+    checkTokenAndNavigate();
   }, [navigation]);
 
   return (
@@ -34,8 +62,6 @@ const Splash = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
    background: {
     flex: 1,

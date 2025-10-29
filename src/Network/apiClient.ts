@@ -23,7 +23,7 @@ api.interceptors.request.use(
       if (token) {
         config.headers = {
           ...config.headers,
-          Authorization: `Token ${token}`, 
+          Authorization: `Bearer ${token}`, 
         };
       }
 

@@ -24,6 +24,7 @@ import { ApiConstants } from '../../Theme/ApiConstants';
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveToken } from '../../Theme/Helper';
 
 const Login = ({navigation}: any) => {
   const [formdata, setFormData] = React.useState({
@@ -146,16 +147,20 @@ const Login = ({navigation}: any) => {
       const response = await postRequest(ApiConstants.LOGIN, body);
       setLoading(false);
   
-      // console.log("HTTP Status Code restApiToLogin:", response.status);
+      console.log("HTTP Status Code restApiToLogin:", response.status);
       console.log("Response in restApiToLogin:", response.data);
   
-      if (response.status === 200 || response.status === 201) {    
+      if (response.status === 200 || response.status === 201) { 
+         const token = response?.data?.data?.tokens?.access
+         console.log("token in 200 in restApiToLogin:", token); 
+         saveToken(token)
+
         navigation.reset({
           index: 0,
           routes: [{ name: ScreenConstants.BOTTOM_TAB_NAVIGATOR }],
         }); 
       }
-      else if(response.status === 401){
+      else if(response.status === 401 && response?.data?.message?.includes('Email is not verified')){
           navigate(ScreenConstants.OTP_VERIFICATION, {fromSignUpLogin: true, email: formdata.email.toLowerCase().trim()})
       }
       else {
