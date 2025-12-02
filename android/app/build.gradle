@@ -82,8 +82,8 @@ android {
         applicationId "com.treematch"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.0"
     }
     signingConfigs {
         debug {
@@ -114,6 +114,9 @@ android {
 }
 
 dependencies {
+    // Add this line for Google Maps support:
+    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+    
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 

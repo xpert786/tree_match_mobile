@@ -95,6 +95,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: Fonts.REGULAR,
     color: Colors.DEEP_GREEN,
+    width: width * 0.75,
   },
 
   dropdownContainer: {
@@ -123,6 +124,37 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: Fonts.MEDIUM,
     color: Colors.WHITE,
-  }
-
+  },
+  aiSummaryContainer: {
+    backgroundColor: '#E8F5E8',
+    padding: 15,
+    margin: 20,
+    marginTop: 10,
+    borderRadius: 10,
+    borderLeftWidth: 4,
+    borderLeftColor: '#4CAF50',
+  },
+  aiSummaryTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2E7D32',
+    marginBottom: 8,
+  },
+  aiSummaryText: {
+    fontSize: 14,
+    color: '#555',
+    lineHeight: 20,
+  },
+  aiModelText: {
+    fontSize: 12,
+    // fontFamily: Fonts.ITALIC,
+    color: Colors.GREY,
+    textAlign: 'right',
+  },
+  dropdownItem: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E5E5',
+  },
 })

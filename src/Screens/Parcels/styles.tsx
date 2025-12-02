@@ -96,6 +96,13 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     paddingRight: 20,
   },
+  editableInput: {
+    borderWidth: 1,
+    borderColor: Colors.GREEN,
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: Colors.WHITE,
+  },
 
   placeName: {
     fontSize: 22,
@@ -133,6 +140,8 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.LIGHTER_GREY,
+    position: 'relative',  // 👈 make this container a positioned ancestor
+    zIndex: 0,  
   },
   placesImage: {
     height: 90,
@@ -148,13 +157,13 @@ export const styles = StyleSheet.create({
   },
   boxView: {
     height: 36,
-    width: 87,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: Colors.ANTI_FLASH_WHITE,
     borderRadius: 16,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingHorizontal: 6
   },
   icons: {
     height: 28,
@@ -203,7 +212,46 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: Fonts.MEDIUM,
     color: Colors.GREY11,
-  }
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  voiceButton: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginTop: 24,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  voiceIcon: {
+    width: 24,
+    height: 24,
+  },
+  listeningContainer: {
+    backgroundColor: Colors.RED,
+    padding: 10,
+    marginHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  listeningText: {
+    color: Colors.WHITE,
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+
 
 });
 

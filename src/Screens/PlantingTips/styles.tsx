@@ -48,142 +48,142 @@ export const styles = StyleSheet.create({
     marginHorizontal: 30,
     marginBottom: 25
   },
-   treeView: {
-      height: 388,
-      width: width,
-      backgroundColor: Colors.LILY_POND,
-      borderBottomLeftRadius: 50,
-    },
-    topView: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginHorizontal: 29,
-      alignItems: 'center',
-      marginTop: 20,
-    },
-    rightIcons: {
-      flexDirection: 'row',
-    },
-    treeName: {
-      fontSize: 40,
-      fontFamily: Fonts.SEMIBOLD,
-      color: Colors.DEEP_GREEN,
-      flex: 1,
-    },
-    treeDetailsView: {
-      flexDirection: 'row',
-      flex: 1
-    },
-    leftDetailsView: {
-      flex: 0.4,
-      paddingLeft: 29,
-    },
-    name: {
-      fontSize: 23,
-      fontFamily: Fonts.REGULAR,
-      color: Colors.FOREST_GREEN2,
-      zIndex: 999
-    },
-    title: {
-      fontSize: 14,
-      fontFamily: Fonts.SEMIBOLD,
-      color: Colors.DARK_GREYISH_BLUE,
-    },
-    value: {
-      fontSize: 20,
-      fontFamily: Fonts.MEDIUM,
-      color: Colors.DEEP_GREEN,
-      zIndex: 999,
-    },
-    treeImageView: {
-      flex: 0.6,
-      alignItems: 'center',
-      justifyContent: 'flex-end'
-    },
-    treeImage: {
-      height: 310,
-      width: width * 0.6,
-      resizeMode: 'cover'
-    },
-    iIcon: {
-      position: 'absolute',
-      bottom: 30,
-      right: 30,
-      zIndex: 999
-    },
+  treeView: {
+    height: 388,
+    width: width,
+    backgroundColor: Colors.LILY_POND,
+    borderBottomLeftRadius: 50,
+  },
+  topView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 29,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  rightIcons: {
+    flexDirection: 'row',
+  },
+  treeName: {
+    fontSize: 40,
+    fontFamily: Fonts.SEMIBOLD,
+    color: Colors.DEEP_GREEN,
+    flex: 1,
+  },
+  treeDetailsView: {
+    flexDirection: 'row',
+    flex: 1
+  },
+  leftDetailsView: {
+    flex: 0.4,
+    paddingLeft: 29,
+  },
+  name: {
+    fontSize: 23,
+    fontFamily: Fonts.REGULAR,
+    color: Colors.FOREST_GREEN2,
+    zIndex: 999
+  },
+  title: {
+    fontSize: 14,
+    fontFamily: Fonts.SEMIBOLD,
+    color: Colors.DARK_GREYISH_BLUE,
+  },
+  value: {
+    fontSize: 20,
+    fontFamily: Fonts.MEDIUM,
+    color: Colors.DEEP_GREEN,
+    zIndex: 999,
+  },
+  treeImageView: {
+    flex: 0.6,
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+  },
+  treeImage: {
+    height: 310,
+    width: width * 0.52,
+    resizeMode: 'cover'
+  },
+  iIcon: {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+    zIndex: 999
+  },
   parcelsText: {
     fontSize: 24,
     fontFamily: Fonts.BOLD,
     color: Colors.DEEP_GREEN,
-    marginLeft: 30, 
+    marginLeft: 30,
     marginBottom: 10
   },
-   dropdown: {
-      height: 58,
-      width: width - 60,
-      borderRadius: 35,
-      backgroundColor: Colors.WHITE,
-      paddingLeft: 8,
-      paddingRight: 7,
-      marginHorizontal: 30,
-      marginBottom: 25,
-      borderColor: Colors.BORDER_GREY2,
-      borderWidth: 1,
-      justifyContent: 'center'
-    },
-    placeholderStyle: {
-      fontSize: 15,
-      color: Colors.PLACEHOLDER_GREY,
-      fontFamily: Fonts.REGULAR,
-      paddingLeft: 10
-    },
-    selectedTextStyle: {
-      fontSize: 15,
-      color: Colors.DEEP_GREEN,
-      fontFamily: Fonts.REGULAR,
-      paddingLeft: 10
-    },
-    dropdownItemText: {
-      fontSize: 16,
-      color: Colors.DEEP_GREEN,
-      fontFamily: Fonts.MEDIUM,   // 👈 font for dropdown list items
-      paddingVertical: 12,
-      paddingHorizontal: 20,
-    },
-    bottomButtons: {
-      alignSelf: 'flex-end',
-      marginRight: 30,
-      paddingVertical: 12,
-      paddingHorizontal: 18,
-      backgroundColor: Colors.FOREST_GREEN,
-      borderRadius: 30,
-      alignItems: 'center'
-    },
-    buttonText: {
-      fontSize: 16,
-      fontFamily: Fonts.MEDIUM,
-      color: Colors.WHITE,
-    },
-    modalOverlay: {
-      flex: 1,
-      backgroundColor: "rgba(0,0,0,0.5)",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    modalContainer: {
-      backgroundColor: "#fff",
-      borderRadius: 16,
-      padding: 20,
-      width: "90%",
-    },
-    closeButton: {
-      marginTop: 20,
-      backgroundColor: "#4CAF50",
-      paddingVertical: 10,
-      borderRadius: 10,
-      alignItems: "center",
-    },
-      aboutText: {
+  dropdown: {
+    height: 58,
+    width: width - 60,
+    borderRadius: 35,
+    backgroundColor: Colors.WHITE,
+    paddingLeft: 8,
+    paddingRight: 7,
+    marginHorizontal: 30,
+    marginBottom: 25,
+    borderColor: Colors.BORDER_GREY2,
+    borderWidth: 1,
+    justifyContent: 'center'
+  },
+  placeholderStyle: {
+    fontSize: 15,
+    color: Colors.PLACEHOLDER_GREY,
+    fontFamily: Fonts.REGULAR,
+    paddingLeft: 10
+  },
+  selectedTextStyle: {
+    fontSize: 15,
+    color: Colors.DEEP_GREEN,
+    fontFamily: Fonts.REGULAR,
+    paddingLeft: 10
+  },
+  dropdownItemText: {
+    fontSize: 16,
+    color: Colors.DEEP_GREEN,
+    fontFamily: Fonts.MEDIUM,   // 👈 font for dropdown list items
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+  },
+  bottomButtons: {
+    alignSelf: 'flex-end',
+    marginRight: 30,
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    backgroundColor: Colors.FOREST_GREEN,
+    borderRadius: 30,
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 16,
+    fontFamily: Fonts.MEDIUM,
+    color: Colors.WHITE,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 16,
+    padding: 20,
+    width: "90%",
+  },
+  closeButton: {
+    marginTop: 20,
+    backgroundColor: "#4CAF50",
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  aboutText: {
     fontSize: 24,
     fontFamily: Fonts.BOLD,
     color: Colors.DEEP_GREEN,
@@ -198,16 +198,17 @@ export const styles = StyleSheet.create({
     lineHeight: 25,
     marginBottom: 25
   },
-   appropriateView: {
-    marginBottom: 25,
-    marginHorizontal: 30,
+  appropriateView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 5
+    alignItems: 'flex-start',
+    marginTop: 10,
+    marginBottom: 15
   },
-  appropriateItem:{
-     alignItems: 'center',
+  appropriateItem: {
+    flex: 1,
+    alignItems: 'center',
+    paddingHorizontal: 5,
   },
   treeTitle: {
     fontSize: 12,
@@ -220,8 +221,9 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.FOREST_GREEN,
+    textAlign: 'center'
   },
-    soilWrapper: {
+  soilWrapper: {
     borderWidth: 1,
     borderColor: Colors.WHITISH_GREY,
     borderRadius: 30,
@@ -248,39 +250,40 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.MEDIUM,
     color: Colors.DEEP_GREEN
   },
-   limitationsBox: {
-      width: width - 60,
-      marginHorizontal: 30,
-      alignSelf: 'center',
-      borderRadius: 20,
-      borderWidth: 1,
-      borderColor: Colors.FOREST_GREEN,
-      backgroundColor: Colors.GREEN3,
-      justifyContent: 'center',
-      padding: 18,
-    },
-    limitationsText: {
-      fontSize: 20,
-      fontFamily: Fonts.MEDIUM,
-      color: Colors.DARK_GREEN,
-      letterSpacing: 1.5
-    },
-    moderateErosion: {
-      fontSize: 15,
-      fontFamily: Fonts.REGULAR,
-      color: Colors.FOREST_GREEN,
-    },
-    diagram1:{
-      height: 200,
-      width: width * 0.9,
-      resizeMode: 'contain' ,
-      alignSelf: 'center',
-    },
-    diagram2:{
-      height: 300,
-      width: width * 0.9,
-      resizeMode: 'contain' ,
-      alignSelf: 'center',
-      marginBottom: 15
-    }
+  limitationsBox: {
+    width: width - 60,
+    marginHorizontal: 30,
+    alignSelf: 'center',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.FOREST_GREEN,
+    backgroundColor: Colors.GREEN3,
+    justifyContent: 'center',
+    padding: 18,
+    marginTop: 20
+  },
+  limitationsText: {
+    fontSize: 20,
+    fontFamily: Fonts.MEDIUM,
+    color: Colors.DARK_GREEN,
+    letterSpacing: 1.5
+  },
+  moderateErosion: {
+    fontSize: 15,
+    fontFamily: Fonts.REGULAR,
+    color: Colors.FOREST_GREEN,
+  },
+  diagram1: {
+    height: 150,
+    width: width * 0.8,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  diagram2: {
+    height: 300,
+    width: width * 0.9,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginBottom: 15
+  }
 })

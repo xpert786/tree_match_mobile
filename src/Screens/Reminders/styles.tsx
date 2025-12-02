@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   treeImage: {
     height: 310,
-    width: width * 0.6,
+    width: width * 0.53,
     resizeMode: 'cover'
   },
   iIcon: {

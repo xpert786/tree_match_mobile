@@ -77,13 +77,16 @@ export const styles = StyleSheet.create({
     left: "20%",
     height: 250,
     width: 250,
-    zIndex: 2, // keep above scroll
+    zIndex: 2,
   },
 
   detailsScroll: {
     flex: 1,
-    marginTop: height * 0.12 + 270, // push below circle
+    marginTop: height * 0.02, // circle ke neeche content start ho
+    // paddingHorizontal: 20,
   },
+
+
   spotContainer: {
     position: "absolute",
     flexDirection: "row",   // spot -> line -> text
@@ -139,14 +142,14 @@ export const styles = StyleSheet.create({
     marginHorizontal: 30,
     marginBottom: 7
   },
-  detailsTitle2:{
+  detailsTitle2: {
     fontSize: 24,
     fontFamily: Fonts.BOLD,
     color: Colors.WHITE,
     marginHorizontal: 30,
     marginBottom: 10
   },
-  percentageImage:{
+  percentageImage: {
     height: 50,
     width: 54,
     alignSelf: 'center'
@@ -161,16 +164,91 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     resizeMode: 'cover'
   },
-  playIcon:{
+  playIcon: {
     position: 'absolute',
     top: 20,
     left: 20
   },
-  details:{
+  details: {
     fontSize: 18,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.WHITE,
     marginHorizontal: 30
+  },
+  cameraButton: {
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
+    // backgroundColor: Colors.PRIMARY,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderRadius: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cameraIcon: {
+    width: 24,
+    height: 24,
+    tintColor: Colors.WHITE,
+    marginRight: 10,
+  },
+  cameraButtonText: {
+    color: Colors.WHITE,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+
+  loadingContainer: {
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderRadius: 25,
+  },
+  loadingText: {
+    color: Colors.WHITE,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  confidenceCircleWrapper: {
+    // position: 'absolute',
+    // top: height * 0.05,          
+    left: 0,
+    right: 0,
+    alignItems: 'center',        // horizontal center
+    zIndex: 10,
+  },
+  confidenceCircle: {
+    borderRadius: 35,            // half of 70
+    borderWidth: 4,
+    borderColor: Colors.LIGHT_GREEN,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    height: 70,
+    width: 70,
+  },
+  confidenceText: {
+    color: Colors.WHITE,
+    fontSize: 20,
+    fontFamily: Fonts.BOLD,
+  },
+  confidenceText1: {
+    color: Colors.WHITE,
+    fontSize: 18,
+    fontFamily: Fonts.SEMIBOLD,
+    marginTop: 6,
+    textAlign: 'center',         // center align
   }
 
 });

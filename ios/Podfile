@@ -16,9 +16,9 @@ end
 
 target 'TreeMatch' do
   config = use_native_modules!
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps', :subspecs => ['Google']
   # pod 'react-native-maps', :path => '../node_modules/react-native-maps'
-  # pod 'Google-Maps-iOS-Utils'
-    pod 'GoogleMaps'
+  # pod 'GoogleMaps'
 
 
   use_react_native!(

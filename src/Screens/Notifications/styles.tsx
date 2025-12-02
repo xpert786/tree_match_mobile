@@ -67,8 +67,9 @@ export const styles = StyleSheet.create({
   treeInfo: {
     justifyContent: 'center',
     flex: 1,
-    marginRight: 15,
-    paddingRight: 15,
+    // marginRight: 15,
+    // paddingRight: 15,
+    // backgroundColor: 'pink',
   },
   treeimage: {
     height: 40,
@@ -86,12 +87,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     alignSelf: 'center',
+    // backgroundColor: 'yellow',
   },
   idealTime: {
     fontSize: 15,
     fontFamily: Fonts.REGULAR,
     color: Colors.DEEP_GREEN,
-    marginRight: 5
+    // marginRight: 5,
+    // backgroundColor: 'red',
   },
   days: {
     fontSize: 15,
@@ -102,7 +105,11 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     top: 15
-  }
+  },
+  deleteButton: {
+  padding: 5,
+},
+
 
 
 })

@@ -105,7 +105,7 @@ export const styles = StyleSheet.create({
     width: 67,
     resizeMode: "contain",
     borderRadius: 20,
-    marginTop: 10,
+    // marginTop: 10,
     alignSelf: 'center',
   },
   bookmark: {
@@ -123,7 +123,10 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN,
     zIndex: 999,
-    marginBottom: -7
+    marginBottom: -7,
+    flex: 1, 
+    flexWrap: 'wrap',
+    marginRight: 17
   },
 
   timeYears: {
@@ -142,7 +145,7 @@ export const styles = StyleSheet.create({
     marginTop: 8,
   },
   feet: {
-    fontSize: 6,
+    fontSize: 7,
     fontFamily: Fonts.BOLD,
     color: Colors.WHITE,
     marginLeft: 6,
@@ -163,7 +166,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.GREY3,
     height: 50,
     width: 50,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: 10
   },
   treeName2: {
@@ -240,5 +243,56 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     alignItems: "center",
+  },
+  // styles.ts में ये styles add करें
+  noTreesContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 40,
+    marginHorizontal: 30,
+    backgroundColor: Colors.WHITE,
+    borderRadius: 12,
+    marginTop: 10,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  noTreesIcon: {
+    width: 80,
+    height: 80,
+    marginBottom: 16,
+    opacity: 0.7,
+  },
+  noTreesText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.DARK_GREYISH_BLUE,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  noTreesSubText: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: Colors.GREY9,
+    textAlign: 'center',
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  refreshButton: {
+    backgroundColor: Colors.FOREST_GREEN,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  refreshButtonText: {
+    color: Colors.WHITE,
+    fontSize: 14,
+    fontWeight: '600',
   },
 })

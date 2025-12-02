@@ -5,7 +5,7 @@ import { ApiConstants } from "../Theme/ApiConstants";
 
 const api = axios.create({
   baseURL: ApiConstants.BASE_URL,
-  timeout: 10000,
+  timeout: 50000,
   headers: {
     "Content-Type": "application/json",
   },

@@ -6,7 +6,6 @@ import {
   Text,
   Image,
   ImageBackground,
-  TouchableOpacity,
   Platform,
 } from 'react-native';
 import { Images } from '../../Assets';
@@ -263,17 +262,17 @@ const SignUp = () => {
                 onPress={tapOnSaveAndContinue}
               />
 
-              <View style={styles.continueContainer}>
+              {/* <View style={styles.continueContainer}>
                 <View style={styles.horizontalLine} />
                 <Text style={styles.orContinueWith}>
                   {StringConstants.OR_CONTINUE_WITH}
                 </Text>
                 <View style={styles.horizontalLine} />
-              </View>
+              </View> */}
 
-              <TouchableOpacity style={styles.button} onPress={() => {}}>
+              {/* <TouchableOpacity style={styles.button} onPress={() => {}}>
                 <Image source={Images.ic_google} />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </KeyboardAwareScrollView>
         </ImageBackground>

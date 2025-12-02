@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
 
   treePic: {
     height: 140,
-    width: 141,
+    width: width * 0.35,
     resizeMode: "contain",
     borderRadius: 20,
     marginTop: 10,
@@ -96,7 +96,8 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN,
     zIndex: 999,
-    marginBottom: -3
+    marginBottom: -3,
+    paddingRight: 15
   },
 
   timeYears: {
@@ -108,25 +109,122 @@ export const styles = StyleSheet.create({
     color: Colors.GREY8,
   },
   bottomView: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginHorizontal: 10,
-  marginTop: 10,
-},
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
 
-feetWrapper: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  maxWidth: '70%',   // prevents text from eating all space
-},
+  feetWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    maxWidth: '70%',   // prevents text from eating all space
+  },
 
-feet: {
-  fontSize: 14,
-  fontFamily: Fonts.BOLD,
-  color: Colors.WHITE,
-  marginLeft: 6,
-  marginRight: 4
-},
+  feet: {
+    fontSize: 14,
+    fontFamily: Fonts.BOLD,
+    color: Colors.WHITE,
+    marginLeft: 6,
+    marginRight: 4
+  },
+  searchButton: {
+    backgroundColor: '#006400',
+    alignSelf: 'center',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 40,
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  searchButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  backButton: {
+    backgroundColor: '#6c757d',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 6,
+  },
+  backButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingHorizontal: 20,
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 24,
+    width: '100%',
+    maxWidth: 320,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  modalMessage: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 24,
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  modalButton: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
+  cancelButton: {
+    backgroundColor: Colors.LIGHT_GREY,
+  },
+
+  confirmButton: {
+    backgroundColor: Colors.FOREST_GREEN,
+  },
+
+  cancelButtonText: {
+    fontSize: 16,
+    color: Colors.GREY7,
+    fontFamily: Fonts.MEDIUM, // ✅ यहाँ भी add करें
+  },
+
+  confirmButtonText: {
+    fontSize: 16,
+    color: Colors.WHITE,
+    fontFamily: Fonts.MEDIUM, // ✅ यहाँ भी add करें
+  },
+  noDataContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 50,
+    marginHorizontal: 20,
+  },
+  noDataText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
 })

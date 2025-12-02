@@ -20,6 +20,7 @@ interface SearchInputProps extends TextInputProps {
   tapOnRightIcon ?:any
   rightIcon ?: any
   leftIcon ?: any
+  rightIconStyles ?: any
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -30,6 +31,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   tapOnRightIcon,
   rightIcon,
   leftIcon,
+  rightIconStyles,
   ...props
 }) => {
   return (
@@ -49,7 +51,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
       {/* Right icon */}
       <TouchableOpacity onPress={tapOnRightIcon}>
-      <Image source={rightIcon ? rightIcon : Images.ic_microphone} style={styles.rightIcon} />
+      <Image source={rightIcon ? rightIcon : Images.ic_microphone} style={[styles.rightIcon, rightIconStyles]} />
       </TouchableOpacity>
     </View>
   );

@@ -109,6 +109,8 @@ export const Images ={
     ic_round_cross: require('./images/ic_round_cross.png'),
     ic_calender: require('./images/ic_calender.png'),
     ic_temperature: require('./images/ic_temperature.png'),
+    dummy_placeholder:  require('./images/dummy_placeholder.png'),
+    ic_microphone_listen:  require('./images/ic_microphone_listen.png'),
 
     ic_watering: require('./images/ic_watering.png'),
     ic_soil_layers: require('./images/ic_soil_layers.png'),
@@ -117,6 +119,7 @@ export const Images ={
     ic_planting: require('./images/ic_planting.png'),
     ic_pests: require('./images/ic_pests.png'),
     ic_light: require('./images/ic_light.png'),
+    ic_pin: require('./images/ic_pin.png'),
 
 
     //dummy images

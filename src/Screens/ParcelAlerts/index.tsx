@@ -1,114 +1,235 @@
-import React from 'react';
-import {  View, StatusBar, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StatusBar, Text, Image, TouchableOpacity, ScrollView, Pressable } from 'react-native';
 import { styles } from './styles';
 import Header from '../../Components/Header';
 import { StringConstants } from '../../Theme/StringConstants';
 import { Images } from '../../Assets';
 import { navigate } from '../../Utils/NavigationService';
 import { ScreenConstants } from '../../Theme/ScreenConstants';
+import { ApiConstants } from '../../Theme/ApiConstants';
+import { postRequest } from '../../Network/apiClient';
+import Loader from '../../Modal/Loader';
+import AlertModal from '../../Modal/AlertModal';
+import { Toast } from 'toastify-react-native';
 
-const data = [
-  { id: 1, title: "Seeding (April)", dropdown: ["Jan - Mar", "Apr - Jun", "Jul - Sep"]  },
-  { id: 2, title: "Pesticides (1-2 times in Months )",  dropdown: ["1-2 times in Months", "2-3 times in Months", "3-4 times in Months"]  },
-  { id: 3, title: "Sunlight (2-3 days in weeks)" , dropdown: ["3-5 days in weeks", "2-3 days in weeks", "1-2 days in weeks"] },
-  { id: 4, title: "Ploughing (3-5 times in Year )",  dropdown: ["1-2 times in Year", "2-4 times in Year", "3-5 times in Year"]  },
-  { id: 5, title: "Watering (4-6 times in Months )",  dropdown: ["1-3 times in Months", "3-4 times in Months", "4-6 times in Months"]  },
-  
-];
+const ParcelAlerts = ({ route }: any) => {
+  const { parcelData } = route.params || {};
 
- const ParcelAlerts = () => {
-   const [expandedIndex, setExpandedIndex] = React.useState<number | null>(null);
-   const [selectedValues, setSelectedValues] = React.useState<{ [key: number]: string }>({});
+  console.log("🔔 ParcelAlerts Route Params:", parcelData);
 
-    const tapOnEdit = (index: number) => {
-      setExpandedIndex(expandedIndex === index ? null : index); // toggle
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedValues, setSelectedValues] = useState<{ [key: number]: string }>({});
+  const [loading, setLoading] = useState(false);
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [alertTitle, setAlertTitle] = useState('');
+  const [alertsData, setAlertsData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchAlertsData = async () => {
+      setLoading(true);
+
+      const requestBody = {
+        tree_name: parcelData?.recommended_trees[0]?.name,
+        soil_type: parcelData?.soil_type,
+        location_name: parcelData?.location_name
+      };
+
+      console.log("🌳 Sending dynamic request body:", requestBody);
+
+      try {
+        const response = await postRequest(ApiConstants.TREE_ALERTS, requestBody);
+
+        console.log("✅ HTTP Status Code:", response.status);
+        console.log("📋 API Response:", response.data);
+
+        if (response.status === 200 || response.status === 201) {
+          setAlertsData(response.data.data || response.data);
+        } else {
+          setAlertTitle(response.data?.message || response.message || "Failed to load alerts data");
+          setShowAlertModal(true);
+        }
+      } catch (error) {
+        console.log("❌ API Error:", error);
+        setAlertTitle("Network error. Please try again.");
+        setShowAlertModal(true);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const handleSelect = (index: number, value: string) => {
-        setSelectedValues(prev => ({ ...prev, [index]: value }));
-        setExpandedIndex(null); // close dropdown after selection
-    };
+    fetchAlertsData();
+  }, [parcelData]);
+
+  const getTreeImage = () => {
+    if (alertsData?.tree_image_url) {
+      return { uri: alertsData.tree_image_url };
+    }
+    if (parcelData?.soil_image_url) {
+      return { uri: parcelData.soil_image_url };
+    }
+    return Images.img_landscape;
+  };
+
+  const getTreeName = () => {
+    return alertsData?.tree_name || parcelData?.parcel_name || '';
+  };
+
+  const getScientificName = () => {
+    return alertsData?.scientific_name || '';
+  };
+
+  const getAgeRange = () => {
+    return alertsData?.age_range  || 'N/A';
+  };
+
+  const getSizeRange = () => {
+    return alertsData?.size_range || 'Not specified';
+  };
+
+  const tapOnEdit = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const handleSelect = (index: number, value: string) => {
+    setSelectedValues(prev => ({ ...prev, [index]: value }));
+    setExpandedIndex(null);
+  };
+
+  const formatAlertData = () => {
+    if (!alertsData?.alert_items) return [];
+
+    return alertsData.alert_items.map((item: any, index: number) => {
+      const dropdownOptions = item.sub_items || [
+        item.window,
+        `Reschedule ${item.title}`,
+        `Skip ${item.title}`
+      ];
+
+      return {
+        id: index + 1,
+        title: `${item.title} (${item.window})`,
+        dropdown: dropdownOptions,
+        originalItem: item
+      };
+    });
+  };
+
+  const alertItems = formatAlertData();
+
+
+ 
 
   return (
     <View style={styles.container}>
-       <StatusBar
-              translucent={true}
-              backgroundColor="transparent"
-              barStyle="dark-content"
-            />
-       <Header title={StringConstants.PARCEL_ALERTS} /> 
+      <StatusBar
+        translucent={true}
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
 
-       <ScrollView contentContainerStyle={{paddingBottom: 40}}>
+      <Loader visible={loading} />
+      {showAlertModal && (
+        <AlertModal
+          visible={showAlertModal}
+          title={alertTitle}
+          onOkPress={() => {
+            setAlertTitle('');
+            setShowAlertModal(false);
+          }}
+        />
+      )}
 
-        {/* TopView */}
+      <Header title={StringConstants.PARCEL_ALERTS} />
+
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={styles.treeView}>
-           <View style={styles.topView}>
-            <Text style={styles.treeName} numberOfLines={1}>Oak Tree</Text>
-            <View style={styles.rightIcons}>
-                <Image source={Images.ic_share} style={{marginHorizontal: 5}} />
-                <Image source={Images.ic_download_circle} />
-            </View>
-           </View>
+          <View style={styles.topView}>
+            <Text style={styles.treeName} numberOfLines={1}>
+              {getTreeName()}
+            </Text>
+            {/* <Pressable style={styles.rightIcons} onPress={downloadParcelInAsync}>
+              <Image source={Images.ic_download_circle} style={{ marginHorizontal: 5 }} />
+            </Pressable> */}
+          </View>
 
-           <View style={styles.treeDetailsView} >
-             <View style={styles.leftDetailsView}>
-              <Text style={styles.name}>Quercus</Text>
-              <View style={{flex: 1, justifyContent: 'center'}}>
+          <View style={styles.treeDetailsView}>
+            <View style={styles.leftDetailsView}>
+              <Text style={styles.name}>
+                {getScientificName()}
+              </Text>
+              <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={styles.title}>AGE</Text>
-                <Text style={[styles.value, {marginBottom: 26}]}>400- 600</Text>
+                <Text style={[styles.value, { marginBottom: 26 }]}>
+                  {getAgeRange()}
+                </Text>
                 <Text style={styles.title}>SIZE</Text>
-                <Text style={styles.value}>40 to 80 feet</Text>
+                <Text style={styles.value}>
+                  {getSizeRange()}
+                </Text>
               </View>
-             </View>
-             <View style={styles.treeImageView}>
-                <Image source={Images.img_tree1} style={styles.treeImage} />
-                <Image source={Images.ic_i_icon} style={styles.iIcon} />
-             </View>
-           </View>
+            </View>
+            <View style={styles.treeImageView}>
+              <Image
+                source={getTreeImage()}
+                style={styles.treeImage}
+              />
+              <Pressable style={styles.iIcon} onPress={()=> Toast.success(alertsData.ai_summary)}>
+              <Image source={Images.ic_i_icon}  />
+              </Pressable>
+            </View>
+          </View>
         </View>
 
-        {/* Alerts */}
         <Text style={styles.alerts}>Alerts</Text>
 
-        {data.map((item, index) => {
-            // Use selected value if exists, otherwise keep original
-              const currentValue = selectedValues[index];
-              const bracketValue = currentValue ? `(${currentValue})` : item.title.match(/\(.*?\)/)?.[0] || "";
+        {alertItems.length > 0 ? (
+          alertItems.map((item: any, index: number) => {
+            const currentValue = selectedValues[index];
 
-            // Replace old bracket with new one
-              const newTitle = item.title.replace(/\(.*?\)/, bracketValue);
+            let displayTitle = item.title;
+            if (currentValue) {
+              const titleWithoutWindow = item.originalItem.title;
+              displayTitle = `${titleWithoutWindow} (${currentValue})`;
+            }
 
             return (
-            <View key={item.id} style={styles.listView}>
-                {/* Row for title + icon */}
+              <View key={item.id} style={styles.listView}>
                 <View style={styles.rowBetween}>
-                <Text style={styles.listText}>{`${index + 1}. ${newTitle}`}</Text>
-                <TouchableOpacity onPress={() => tapOnEdit(index)}>
+                  <Text style={styles.listText}>{`${index + 1}. ${displayTitle}`}</Text>
+                  <TouchableOpacity onPress={() => tapOnEdit(index)}>
                     <Image
-                    source={expandedIndex === index ? Images.ic_down_arrow : Images.ic_edit_pen}
+                      source={expandedIndex === index ? Images.ic_down_arrow : Images.ic_edit_pen}
                     />
-                </TouchableOpacity>
+                  </TouchableOpacity>
                 </View>
 
-                {/* Dropdown Section */}
                 {expandedIndex === index && (
-                <View style={styles.dropdownContainer}>
-                    {item.dropdown.map((label, i) => (
-                    <TouchableOpacity key={i} onPress={() => handleSelect(index, label)}>
+                  <View style={styles.dropdownContainer}>
+                    {item.dropdown.map((label: string, i: number) => (
+                      <TouchableOpacity
+                        key={i}
+                        onPress={() => handleSelect(index, label)}
+                        style={styles.dropdownItem}
+                      >
                         <Text style={styles.dropdownLabel}>{label}</Text>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
                     ))}
-                </View>
+                  </View>
                 )}
-            </View>
+              </View>
             );
-        })}
-        <TouchableOpacity style={styles.setAlertBtn} onPress={()=> navigate(ScreenConstants.NOTIFICATION_SETTINGS)}>
-            <Text style={styles.setAlerts}>Set Alerts</Text>
-        </TouchableOpacity>
-       </ScrollView>
+          })
+        ) : null}
 
+        <TouchableOpacity
+          style={styles.setAlertBtn}
+          onPress={() => navigate(ScreenConstants.NOTIFICATION_SETTINGS)}
+        >
+          <Text style={styles.setAlerts}>Set Alerts</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </View>
-    );
-  };
+  );
+};
+
 export default ParcelAlerts;

@@ -9,19 +9,35 @@ export const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: Colors.LIGHTER_GREY
   },
-scanResultWrapper: {
-  width: width * 0.9,
-  alignSelf: 'center',
-  position: 'absolute',
-  borderRadius: 10,
-  paddingHorizontal: 15,
-  paddingVertical: 50,
-  overflow: 'hidden', // ✅ important: keeps blur inside
-  borderColor: Colors.WHITISH_GREY,
-  borderWidth: 0.5,
-  bottom: 110,
-},
-
+  // scanResultWrapper: {
+  //   width: width * 0.9,
+  //   alignSelf: 'center',
+  //   position: 'absolute',
+  //   borderRadius: 10,
+  //   paddingHorizontal: 15,
+  //   paddingVertical: 50,
+  //   overflow: 'hidden', // ✅ important: keeps blur inside
+  //   borderColor: Colors.WHITISH_GREY,
+  //   borderWidth: 0.5,
+  //   bottom: 110,
+  // },
+  scanResultWrapper: {
+    width: width * 0.9,
+    alignSelf: 'center',
+    position: 'absolute',
+    borderRadius: 14,
+    paddingHorizontal: 15,
+    paddingVertical: 50,
+    overflow: 'hidden',
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderWidth: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)', // ✨ transparent light layer
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    bottom: 110,
+  },
   sunIcon: {
     alignSelf: 'center',
     tintColor: Colors.WHITE,
@@ -106,6 +122,55 @@ scanResultWrapper: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
     marginTop: 5
-  }
+  },
+  // Add these to your existing styles
+  reactionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 5,
+    borderRadius: 8,
+  },
+  activeReaction: {
+    backgroundColor: 'rgba(76, 175, 80, 0.1)', // Light green for active like
+  },
+  reactionIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#666',
+  },
+  activeReactionIcon: {
+    tintColor: '#4CAF50', // Green for active like
+  },
+  reactionCount: {
+    fontSize: 12,
+    marginLeft: 4,
+    color: '#666',
+    fontWeight: '500',
+  },
+
+
+  activeLikeButton: {
+    backgroundColor: '#007AFF', // Blue background for like
+  },
+
+  activeDislikeButton: {
+    backgroundColor: '#007AFF', // Blue background for dislike
+  },
+
+
+  activeLikeIcon: {
+    tintColor: '#FFFFFF', // White icon when liked
+  },
+
+  activeDislikeIcon: {
+    tintColor: '#FFFFFF', // White icon when disliked
+  },
+
+
+
+  activeReactionCount: {
+    color: '#FFFFFF', // White text when active
+  },
+  
 
 })

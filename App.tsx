@@ -4,15 +4,18 @@ import MainStack from "./src/Routes/MainStack";
 import { navigationRef } from "./src/Utils/NavigationService";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import ToastManager from 'toastify-react-native';
+import { OfflineDownloadsProvider } from "./src/Context/OfflineDownloadsContext";
 
 
 const App = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer ref={navigationRef}>
-          <ToastManager position="top" />
-          <MainStack />
-      </NavigationContainer>
+      <OfflineDownloadsProvider> 
+          <NavigationContainer ref={navigationRef}>
+              <ToastManager position="top" />
+              <MainStack />
+          </NavigationContainer>
+      </OfflineDownloadsProvider>
     </SafeAreaProvider>
   );
 };

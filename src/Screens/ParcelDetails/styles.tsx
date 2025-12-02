@@ -3,7 +3,7 @@ import { Fonts } from "../../Theme/Fonts";
 import { Colors } from "../../Theme/Colors";
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
+ 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -123,8 +123,8 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.REGULAR,
     color: Colors.DARK_RED,
   },
-
-
+ 
+ 
   topView2: {
     flexDirection: 'row',
     justifyContent: "space-between",
@@ -133,14 +133,14 @@ export const styles = StyleSheet.create({
     marginBottom: 14,
   },
   myParcels2: {
-    fontSize: 22,
+    fontSize: 21,
     fontFamily: Fonts.BOLD,
     marginLeft: 9,
     color: Colors.DEEP_GREEN,
   },
   seeMoreBtn2: {
     height: 37,
-    width: 123,
+    paddingHorizontal: 10,
     borderWidth: 1,
     borderRadius: 30,
     borderColor: Colors.BORDER_GREY2,
@@ -153,24 +153,26 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: Fonts.MEDIUM,
     color: Colors.DEEP_GREEN,
-    marginRight: 10
+    marginRight: 5
   },
-  graphContainer:{
-    height: 175,
-    width: width - 60,
-    marginHorizontal: 30,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: Colors.BORDER_GREY2,
-    padding: 10,
-    marginBottom: 25
-  },
+  graphContainer: {
+  height: 220,
+  width: width - 60,
+  marginHorizontal: 30,
+  borderRadius: 20,
+  borderWidth: 1,
+  borderColor: Colors.BORDER_GREY2,
+  paddingVertical: 5, // smaller padding to fit better
+  paddingHorizontal: 5,
+  marginBottom: 25,
+},
   phLevels:{
     fontSize: 14,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN,
-    marginLeft: 9,
-    marginBottom: 9
+    marginLeft: 25,
+    marginBottom: 2,
+    marginTop: 5
   },
   graph:{
     height: 125,
@@ -194,7 +196,7 @@ export const styles = StyleSheet.create({
     width: 50,
     backgroundColor: Colors.LILY_POND,
     borderRadius: 10,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   plantName:{
     fontSize: 24,
@@ -206,49 +208,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.REGULAR,
     color: Colors.GREY8,
   },
-  // plantingGuidanceWrapper:{
-  //   height: 136,
-  //   width: width - 60,
-  //   marginHorizontal: 30,
-  //   borderRadius: 20,
-  //   borderWidth: 1,
-  //   borderColor: Colors.ANTI_FLASH_WHITE,
-  //   marginBottom: 10,
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   paddingHorizontal: 8
-  // },
-  // treeImage2:{
-  //   height: 122,
-  //   width: 122,
-  //   backgroundColor: Colors.LILY_POND,
-  //   borderRadius: 20,
-  //   resizeMode: 'cover',
-  // },
-  // hectare:{
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'center',
-  //   backgroundColor: 'red'
-  // },
-  // treeName:{
-  //   fontSize: 17,
-  //   fontFamily: Fonts.BOLD,
-  //   color: Colors.DEEP_GREEN,
-  //   marginBottom: 12
-  // },
-  // description:{
-  //   fontSize: 17,
-  //   fontFamily: Fonts.MEDIUM,
-  //   color: Colors.GREY12,
-  //   marginBottom: 12
-  // },
-  // hectareValue:{
-  //   fontSize: 16,
-  //   fontFamily: Fonts.MEDIUM,
-  //   color: Colors.DEEP_GREEN,
-  //   marginLeft: 5
-  // }
+  
 plantingGuidanceWrapper: {
   height: 136,
   width: width - 60,
@@ -292,6 +252,44 @@ hectareValue: {
   color: Colors.DEEP_GREEN,
   marginLeft: 5,
 },
-
-
+// Add these to your styles.js file
+phDataContainer: {
+  marginTop: 10,
+  padding: 10,
+  backgroundColor: '#f5f5f5',
+  borderRadius: 8,
+  marginHorizontal: 10,
+},
+phDataTitle: {
+  fontSize: 14,
+  fontWeight: 'bold',
+  marginBottom: 5,
+  color: Colors.BLACK,
+},
+phDataList: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+},
+phDataItem: {
+  fontSize: 12,
+  color: Colors.DARK_GREY,
+  marginRight: 10,
+  marginBottom: 5,
+},
+confidenceContainer: {
+  backgroundColor: Colors.RED,
+  padding: 15,
+  borderRadius: 8,
+  marginHorizontal: 20,
+  marginTop: 10,
+},
+confidenceText: {
+  color: Colors.WHITE,
+  fontSize: 16,
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
+ 
+ 
 })

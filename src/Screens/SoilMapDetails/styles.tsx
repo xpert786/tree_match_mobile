@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 7,
     marginHorizontal: 30,
-    marginBottom: 16,
+    // marginBottom: 16,
   },
   placeholderStyle: {
     fontSize: 20,
@@ -90,6 +90,13 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.MEDIUM,   // 👈 font for dropdown list items
     paddingVertical: 12,
     paddingHorizontal: 20,
+  },
+  errorMessage: {
+      color: '#E74C3C',
+      fontSize: 10,
+      fontFamily: Fonts.REGULAR,
+      marginLeft: width * 0.1,
+      marginBottom: 16,
   },
   allDetails: {
     flexDirection: 'row',

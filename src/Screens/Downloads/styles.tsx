@@ -12,7 +12,12 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     paddingRight: 20,
   },
-
+  emptyContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: Dimensions.get('window').height * 0.7,
+  },
   placeName: {
     fontSize: 22,
     fontFamily: Fonts.SEMIBOLD,
@@ -63,14 +68,16 @@ export const styles = StyleSheet.create({
     color: Colors.LIGHT_GREY,
   },
   boxView: {
-    height: 36,
-    width: 87,
+    // height: 36,
+    // width: 87,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: Colors.ANTI_FLASH_WHITE,
     borderRadius: 16,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingVertical: 5,
+    paddingHorizontal: 9
   },
   icons: {
     height: 28,
@@ -81,6 +88,24 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN,
     marginLeft: 6
+  },
+  deleteIconContainer: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    backgroundColor: Colors.WHITE,
+    borderRadius: 20,
+    padding: 6,
+    elevation: 3, // for Android shadow
+    shadowColor: '#000', // for iOS shadow
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+
+  deleteIcon: {
+    height: 18,
+    width: 18,
   },
 
 });

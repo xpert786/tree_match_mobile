@@ -113,9 +113,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   plantsImages: {
-    resizeMode: 'contain',
-    height: 60,
-    width: 60,
+    resizeMode: 'cover',
+    height: 70,
+    width: 70,
+    borderRadius: 20,
   },
   notificationContainer: {
     width: width * 0.85,
@@ -140,10 +141,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 12
   },
-  timingsView:{
+  timingsView: {
     justifyContent: 'space-between',
   },
-  circle:{
+  circle: {
     height: 39,
     width: 39,
     borderRadius: 25,
@@ -151,66 +152,125 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  count:{
+  count: {
     fontSize: 18,
     fontFamily: Fonts.REGULAR,
   },
-  day:{
+  day: {
     fontSize: 12,
     fontFamily: Fonts.MEDIUM,
     color: Colors.LIGHT_GREY
   },
-  time:{
+  time: {
     fontSize: 16,
     fontFamily: Fonts.BOLD,
     color: Colors.DEEP_GREEN
   },
-  verticalLine:{
-     height: 90,
-     width: 1,
-     alignSelf: 'center',
-     backgroundColor: Colors.LIGHTER_GREY,
-     marginHorizontal: 10
+  verticalLine: {
+    height: 90,
+    width: 1,
+    alignSelf: 'center',
+    backgroundColor: Colors.LIGHTER_GREY,
+    marginHorizontal: 10
   },
-  treeInfo:{
+  treeInfo: {
     justifyContent: 'center',
     flex: 1,
     marginRight: 15,
-    paddingRight: 15,   
+    paddingRight: 15,
   },
   treeimage: {
-  height: 40,
-  width: 40,
-  borderRadius: 10,
-  resizeMode: 'cover',
-  marginRight: 10,       // spacing between image and text
-  alignSelf: 'center',   // ensure vertical centering
-},
+    height: 40,
+    width: 40,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    marginRight: 10,       // spacing between image and text
+    alignSelf: 'center',   // ensure vertical centering
+  },
 
-treeName: {
-  fontSize: 17,
-  fontFamily: Fonts.BOLD,
-  color: Colors.DEEP_GREEN,
-  flex: 1,              
-  flexWrap: 'wrap',
-  alignSelf: 'center', 
-},
-  idealTime:{
+  treeName: {
+    fontSize: 17,
+    fontFamily: Fonts.BOLD,
+    color: Colors.DEEP_GREEN,
+    flex: 1,
+    flexWrap: 'wrap',
+    alignSelf: 'center',
+  },
+  idealTime: {
     fontSize: 15,
     fontFamily: Fonts.REGULAR,
     color: Colors.DEEP_GREEN,
     marginRight: 5
   },
-  days:{
+  days: {
     fontSize: 15,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN
   },
-  crossIcon:{
+  crossIcon: {
     position: 'absolute',
     right: 15,
     top: 15
-  }
+  },
+  demoBadge: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: Colors.FOREST_GREEN,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 4,
+  },
+  demoBadgeText: {
+    fontSize: 10,
+    fontWeight: '500',
+    color: Colors.WHITE,
+    fontFamily: Fonts.MEDIUM,
+  },
+  plantName: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: Colors.DARK_GREYISH_BLUE,
+    textAlign: 'center',
+    marginTop: 8,
+    fontFamily: Fonts.MEDIUM,
+  },
+  emptyStateContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 40,
+    marginHorizontal: 30,
+    marginTop: 20,
+  },
+  emptyStateTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: Colors.DARK_GREYISH_BLUE,
+    textAlign: 'center',
+    marginBottom: 12,
+    fontFamily: Fonts.SEMIBOLD,
+  },
+  emptyStateText: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: Colors.GREY9,
+    textAlign: 'center',
+    lineHeight: 20,
+    marginBottom: 24,
+    fontFamily: Fonts.REGULAR,
+  },
+  getStartedButton: {
+    backgroundColor: Colors.FOREST_GREEN,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  getStartedButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.WHITE,
+    fontFamily: Fonts.SEMIBOLD,
+  },
 
 });
 

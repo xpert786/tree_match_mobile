@@ -8,6 +8,40 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+   zoomContainer: {
+    position: 'absolute',
+    right: 15,
+    top: 20,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  zoomInButton: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  zoomOutButton:{
+   borderBottomEndRadius: 10,
+   borderBottomLeftRadius: 10
+  },
+  commonStyles:{
+    width: 40,
+    height: 40,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 1.5,
+    elevation: 3,
+    marginVertical: 0.5,
+  },
+  zoomText: {
+    height: 18,
+    width: 18,
+    resizeMode: 'contain'
+  },
   loaderContainer: {
     flex: 1,
     justifyContent: "center",
@@ -193,7 +227,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15
   },
   topPicks:{
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.WHITE,
   },
@@ -228,12 +262,13 @@ export const styles = StyleSheet.create({
     width: 70,
     backgroundColor: Colors.SOFT_GREEN,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    overflow: 'hidden',
   },
   plantsImages: {
-    resizeMode: 'contain',
-    height: 60,
-    width: 60,
+    resizeMode: 'cover',
+    height: "100%",
+    width: "100%",
   },
   allDetails: {
     flexDirection: 'row',
@@ -313,7 +348,7 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.REGULAR,
     color: Colors.DEEP_GREEN,
     marginLeft: 5
-  }
+  },
 });
 
 

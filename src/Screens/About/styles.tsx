@@ -44,7 +44,8 @@ export const styles = StyleSheet.create({
     fontSize: 23,
     fontFamily: Fonts.REGULAR,
     color: Colors.FOREST_GREEN2,
-    zIndex: 999
+    zIndex: 999,
+    marginBottom: 20
   },
   title: {
     fontSize: 14,
@@ -56,6 +57,8 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.MEDIUM,
     color: Colors.DEEP_GREEN,
     zIndex: 999,
+    flex: 1, 
+    flexWrap: 'wrap'
   },
   treeImageView: {
     flex: 0.6,
@@ -93,23 +96,26 @@ export const styles = StyleSheet.create({
     marginHorizontal: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginTop: 5
   },
   appropriateItem:{
      alignItems: 'center',
+      width: '30%',  
   },
   treeTitle: {
     fontSize: 12,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DARK_GREYISH_BLUE,
     marginBottom: 4,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    textAlign: 'center', 
   },
   treeTitle2: {
     fontSize: 15,
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.FOREST_GREEN,
+    textAlign: 'center',
   },
   photosView:{
     flexDirection: 'row',

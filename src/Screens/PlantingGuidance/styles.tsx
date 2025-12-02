@@ -95,7 +95,10 @@ export const styles = StyleSheet.create({
     fontFamily: Fonts.SEMIBOLD,
     color: Colors.DEEP_GREEN,
     zIndex: 999,
-    marginBottom: -3
+    marginBottom: -3,
+    flex: 1,
+    flexWrap: 'wrap',
+    marginRight: 15
   },
 
   timeYears: {
@@ -107,25 +110,122 @@ export const styles = StyleSheet.create({
     color: Colors.GREY8,
   },
   bottomView: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginHorizontal: 10,
-  marginTop: 10,
-},
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginTop: 10,
+  },
 
-feetWrapper: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  maxWidth: '70%',   // prevents text from eating all space
-},
+  feetWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    maxWidth: '70%',   // prevents text from eating all space
+  },
 
-feet: {
+  feet: {
+    fontSize: 14,
+    fontFamily: Fonts.BOLD,
+    color: Colors.WHITE,
+    marginLeft: 6,
+    marginRight: 4
+  },
+  // styles.ts में नई styles add करें
+
+  // Location Information Styles
+  locationInfoContainer: {
+    backgroundColor: '#F8F9FA',
+    borderRadius: 12,
+    padding: 16,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderLeftWidth: 4,
+    borderLeftColor: '#4CAF50',
+  },
+
+  locationHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+
+  locationIcon: {
+    width: 16,
+    height: 16,
+    tintColor: '#4CAF50',
+    marginRight: 8,
+  },
+
+  locationTitle: {
+    fontSize: 14,
+    fontFamily: Fonts.MEDIUM,
+    color: '#666',
+  },
+
+  locationName: {
+    fontSize: 18,
+    fontFamily: Fonts.BOLD,
+    color: Colors.BLACK,
+    marginBottom: 8,
+  },
+
+  soilTypeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+
+  soilTypeLabel: {
+    fontSize: 14,
+    fontFamily: Fonts.REGULAR,
+    color: '#666',
+  },
+
+  soilTypeValue: {
+    fontSize: 14,
+    fontFamily: Fonts.SEMIBOLD,
+    color: Colors.BLACK,
+  },
+
+  suggestionsCount: {
+    fontSize: 12,
+    fontFamily: Fonts.REGULAR,
+    color: '#4CAF50',
+    fontStyle: 'italic',
+  },
+
+  // Retry Button
+  retryButton: {
+    backgroundColor: '#4CAF50',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+
+  retryText: {
+    color: Colors.WHITE,
+    fontSize: 14,
+    fontFamily: Fonts.MEDIUM,
+  },
+locationInfo: {
+  marginHorizontal: 20,
+  marginTop: 15,
+  padding: 15,
+  backgroundColor: '#f8f9fa',
+  borderRadius: 10,
+  borderLeftWidth: 4,
+  borderLeftColor: '#006400',
+},
+locationText: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#333',
+  marginBottom: 5,
+},
+soilText: {
   fontSize: 14,
-  fontFamily: Fonts.BOLD,
-  color: Colors.WHITE,
-  marginLeft: 6,
-  marginRight: 4
+  color: '#666',
+  fontStyle: 'italic',
 },
-
 })
