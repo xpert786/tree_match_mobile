@@ -13,7 +13,8 @@ import { postRequest } from '../../Network/apiClient';
 import { ApiConstants } from '../../Theme/ApiConstants';
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 import { capitalize } from '../../Theme/Helper';
 
 const width = Dimensions.get('window').width;
@@ -139,7 +140,12 @@ const SoilMapDetails = ({route}: any) => {
   };
 
   const tapOnDescription =()=>{
-     Toast.success(soilData?.soil_description);
+    //  Toast.success(soilData?.soil_description);
+     Toast.show({
+            type: 'success',
+            text1: 'Success',
+            text2: soilData?.soil_description
+          });
   }
 
   return (

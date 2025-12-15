@@ -6,15 +6,22 @@ import { StringConstants } from '../../Theme/StringConstants';
 import { Images } from '../../Assets';
 import { Colors } from '../../Theme/Colors';
 import { useOfflineDownloads } from '../../Context/OfflineDownloadsContext';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
 import { Fonts } from '../../Theme/Fonts';
+import Toast from 'react-native-toast-message';
 
 const Downloads = ({ navigation }: any) => {
   const { downloads, removeDownload } = useOfflineDownloads();
 
   const handleDelete = async (id: number) => {
     await removeDownload(id);
-    Toast.success('Parcel removed from downloads');
+    // Toast.success('Parcel removed from downloads');
+    Toast.show({
+      type: 'success',
+      text1: 'Success',
+      text2: 'Parcel removed from downloads'
+    });
+
   };
 
 

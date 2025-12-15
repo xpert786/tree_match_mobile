@@ -22,7 +22,8 @@ import { postRequest } from '../../Network/apiClient';
 import { ApiConstants } from '../../Theme/ApiConstants';
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 
 const SignUp = () => {
   const insets = useSafeAreaInsets();
@@ -41,53 +42,53 @@ const SignUp = () => {
   const [showAlertModal, setShowAlertModal] = React.useState(false)
   const [alertTitle, setAlertTitle] = React.useState('')
   const [loading, setLoading] = React.useState(false);
-  
+
 
   const validateForm = (fieldName?: string, value?: string) => {
-  let newErrors: any = { ...errors };
-  let valid = true;
+    let newErrors: any = { ...errors };
+    let valid = true;
 
-  const checkField = (name: string, val: string) => {
-    let error = "";
+    const checkField = (name: string, val: string) => {
+      let error = "";
 
-     if (name === "full_name") {
-      if (!val) {
-        error = "Full Name is required";
-      } else {
-        const regex = /^[A-Za-z\s]+$/;
-        if (!regex.test(val)) {
-          error = "Full name should contain only alphabets and spaces.";
+      if (name === "full_name") {
+        if (!val) {
+          error = "Full Name is required";
+        } else {
+          const regex = /^[A-Za-z\s]+$/;
+          if (!regex.test(val)) {
+            error = "Full name should contain only alphabets and spaces.";
+          }
         }
       }
-    }
 
-    if (name === "email") {
-      if (!val) {
-        error = "Email is required";
-      } else {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(val)) {
-          error = "Please enter a valid email";
+      if (name === "email") {
+        if (!val) {
+          error = "Email is required";
+        } else {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(val)) {
+            error = "Please enter a valid email";
+          }
         }
       }
-    }
 
-    if (name === "password") {
-      if (!val) {
-        error = "Password is required";
-      } else {
-        const passwordRegex =
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        if (!passwordRegex.test(val)) {
-          error =
-            "Password must be at least 8 characters,\ninclude one uppercase,\none lowercase,\none number,\nand one special character.";
+      if (name === "password") {
+        if (!val) {
+          error = "Password is required";
+        } else {
+          const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+          if (!passwordRegex.test(val)) {
+            error =
+              "Password must be at least 8 characters,\ninclude one uppercase,\none lowercase,\none number,\nand one special character.";
+          }
         }
       }
-    }
 
       newErrors[name] = error;
       if (error) valid = false;
-   };
+    };
 
     if (fieldName) {
       // ✅ Validate only one field (live validation)
@@ -105,7 +106,7 @@ const SignUp = () => {
 
 
   const tapOnSaveAndContinue = () => {
-    const isValid = validateForm(); 
+    const isValid = validateForm();
     if (isValid) {
       // convert email to lowercase before sending
       const normalizedData = {
@@ -128,18 +129,29 @@ const SignUp = () => {
     console.log("HTTP Status Code restApiToSignUp:", response.status);
     console.log("Response in restApiToSignUp:", response.data);
 
-    if (response.status === 200 || response.status === 201) {   
-      Toast.success(response.message);   
-      navigate(ScreenConstants.OTP_VERIFICATION, {fromSignUpLogin: true, email: formdata.email.toLowerCase().trim()})
+    if (response.status === 200 || response.status === 201) {
+      // Toast.success(response.message);   
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: response.message
+      });
+      navigate(ScreenConstants.OTP_VERIFICATION, { fromSignUpLogin: true, email: formdata.email.toLowerCase().trim() })
 
     } else {
-      Toast.error(response?.message); 
+      // Toast.error(response?.message); 
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: response?.message
+      });
+
     }
   };
 
 
   return (
-    <SafeAreaView 
+    <SafeAreaView
       style={{ flex: 1 }}
       edges={[]}  // 👈 important: allow content under status bar
     >
@@ -149,17 +161,17 @@ const SignUp = () => {
           backgroundColor="transparent"
           barStyle="light-content"
         />
-         <Loader visible={loading} />
-          {showAlertModal && 
+        <Loader visible={loading} />
+        {showAlertModal &&
           <AlertModal
             visible={showAlertModal}
             title={alertTitle}
-            onOkPress={()=> {
+            onOkPress={() => {
               setAlertTitle('')
               setShowAlertModal(false)
             }}
           />
-          }
+        }
 
         {/* Full background */}
         <Image source={Images.img_tree} style={styles.treeBackground} />
@@ -191,16 +203,16 @@ const SignUp = () => {
                   blurType="light"
                   blurAmount={1}
                 />
-               ) : (
-                  <View style={styles.androidBlurWrapper}>
-                    <Image
-                      source={Images.img_tree} // same as your main background
-                      style={styles.androidBlurImage}
-                      blurRadius={25}          // adjust for more blur
-                    />
-                    <View style={styles.androidOverlay} />
-                  </View>
-               )} 
+              ) : (
+                <View style={styles.androidBlurWrapper}>
+                  <Image
+                    source={Images.img_tree} // same as your main background
+                    style={styles.androidBlurImage}
+                    blurRadius={25}          // adjust for more blur
+                  />
+                  <View style={styles.androidOverlay} />
+                </View>
+              )}
 
               <Text style={styles.loginText}>
                 {StringConstants.CREATE_ACCOUNT}
@@ -221,7 +233,7 @@ const SignUp = () => {
                 errorMessage={errors.full_name}
                 onChangeText={(val) => {
                   setFormdata({ ...formdata, full_name: val });
-                  validateForm("full_name", val); 
+                  validateForm("full_name", val);
                 }}
               />
 
@@ -236,26 +248,26 @@ const SignUp = () => {
                 errorMessage={errors.email}
                 onChangeText={(val) => {
                   setFormdata({ ...formdata, email: val });
-                  validateForm("email", val); 
+                  validateForm("email", val);
                 }}
               />
 
-               <TextInputField
-                  value={formdata.password}
-                  maxLength={100}
-                  showRightIcon
-                  placeholder={StringConstants.CREATE_PASSWORD}
-                  icon={showPassword ? Images.ic_show_eye : Images.ic_hide_eye}
-                  onIconPress={() => setShowPassword(!showPassword)}
-                  returnKeyType="done"
-                  secureTextEntry={!showPassword}
-                  parentStyles={{ marginBottom: 35 }}
-                  errorMessage={errors.password}
-                  onChangeText={(val) => {
-                    setFormdata({ ...formdata, password: val });
-                    validateForm("password", val); 
-                  }}
-                />
+              <TextInputField
+                value={formdata.password}
+                maxLength={100}
+                showRightIcon
+                placeholder={StringConstants.CREATE_PASSWORD}
+                icon={showPassword ? Images.ic_show_eye : Images.ic_hide_eye}
+                onIconPress={() => setShowPassword(!showPassword)}
+                returnKeyType="done"
+                secureTextEntry={!showPassword}
+                parentStyles={{ marginBottom: 35 }}
+                errorMessage={errors.password}
+                onChangeText={(val) => {
+                  setFormdata({ ...formdata, password: val });
+                  validateForm("password", val);
+                }}
+              />
 
               <CommonButton
                 buttonText={StringConstants.CONTINUE}

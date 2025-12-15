@@ -10,7 +10,8 @@ import { ApiConstants } from '../../Theme/ApiConstants';
 import { postRequest } from '../../Network/apiClient';
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 
 const ParcelAlerts = ({ route }: any) => {
   const { parcelData } = route.params || {};
@@ -79,7 +80,7 @@ const ParcelAlerts = ({ route }: any) => {
   };
 
   const getAgeRange = () => {
-    return alertsData?.age_range  || 'N/A';
+    return alertsData?.age_range || 'N/A';
   };
 
   const getSizeRange = () => {
@@ -117,7 +118,7 @@ const ParcelAlerts = ({ route }: any) => {
   const alertItems = formatAlertData();
 
 
- 
+
 
   return (
     <View style={styles.container}>
@@ -173,8 +174,15 @@ const ParcelAlerts = ({ route }: any) => {
                 source={getTreeImage()}
                 style={styles.treeImage}
               />
-              <Pressable style={styles.iIcon} onPress={()=> Toast.success(alertsData.ai_summary)}>
-              <Image source={Images.ic_i_icon}  />
+              <Pressable style={styles.iIcon} onPress={() => {
+                // Toast.success(alertsData.ai_summary)
+                Toast.show({
+                  type: 'success',
+                  text1: 'Success',
+                  text2: alertsData.ai_summary
+                });
+              }}>
+                <Image source={Images.ic_i_icon} />
               </Pressable>
             </View>
           </View>

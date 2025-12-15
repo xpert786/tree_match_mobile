@@ -28,14 +28,14 @@ import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
 import { postRequest } from '../../Network/apiClient';
 import { ApiConstants } from '../../Theme/ApiConstants';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
 import { saveToken } from '../../Theme/Helper';
+import Toast from 'react-native-toast-message';
 
 const CELL_COUNT = 4;
 
 const OtpVerification = ({ navigation, route }: any) => {
-  const {fromSignUpLogin, email} = route?.params || {}
+  const { fromSignUpLogin, email } = route?.params || {}
   const insets = useSafeAreaInsets();
 
   const [value, setValue] = useState('');
@@ -51,8 +51,8 @@ const OtpVerification = ({ navigation, route }: any) => {
     setValue,
   });
 
-   // ✅ Validate OTP live
-    React.useEffect(() => {
+  // ✅ Validate OTP live
+  React.useEffect(() => {
     if (!touched) {
       setError(''); // don't show any error initially
       return;
@@ -79,22 +79,22 @@ const OtpVerification = ({ navigation, route }: any) => {
   };
 
   const restApiToVerifyOtp = async (value: any) => {
-    let body ={
-      otp: value, 
+    let body = {
+      otp: value,
       email: email,
       purpose: fromSignUpLogin ? 0 : 1,
     }
     console.log("body in restApiToVerifyOtp:", body);
-    
+
     const response = await postRequest(ApiConstants.VERIFY_OTP, body);
-    console.log("response in restApiToVerifyOtp",response.data);
-    console.log("HTTP Status Code restApiToVerifyOtp:", response.status)    
+    console.log("response in restApiToVerifyOtp", response.data);
+    console.log("HTTP Status Code restApiToVerifyOtp:", response.status)
     setLoading(false);
 
     if (response.status === 200 || response.status === 201) {
       const token = response?.data?.data?.tokens?.access
       console.log("token in 200 in restApiToVerifyOtp:", token);
-      
+
       saveToken(token)
       if (fromSignUpLogin) {
         //came from register/login
@@ -104,33 +104,48 @@ const OtpVerification = ({ navigation, route }: any) => {
         });
       } else {
         //came from forget password
-        navigate(ScreenConstants.RESET_PASSWORD, {email});
+        navigate(ScreenConstants.RESET_PASSWORD, { email });
       }
     } else {
-      Toast.error(response?.message);
+      // Toast.error(response?.message);
+       Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: response?.message
+      });
     }
   };
-  
-   const restApiToResendOtp = async (value: any) => {
+
+  const restApiToResendOtp = async (value: any) => {
     setLoading(true)
-    let body ={
+    let body = {
       email: email,
       purpose: fromSignUpLogin ? 0 : 1,
     }
     console.log("body in restApiToResendOtp:", body);
-    
+
     const response = await postRequest(ApiConstants.RESEND_OTP, body);
-    console.log("response in restApiToResendOtp",response.data);
-    console.log("HTTP Status Code restApiToResendOtp:", response.status)    
+    console.log("response in restApiToResendOtp", response.data);
+    console.log("HTTP Status Code restApiToResendOtp:", response.status)
     setLoading(false);
 
     if (response.status === 200 || response.status === 201) {
-       Toast.success(response?.data?.message); 
+      //  Toast.success(response?.data?.message); 
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: response?.data?.message
+      });
     } else {
-       Toast.error(response?.message);
+      //  Toast.error(response?.message);
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: response?.message
+      });
     }
   };
-   
+
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#212121' }}>
@@ -139,17 +154,17 @@ const OtpVerification = ({ navigation, route }: any) => {
         backgroundColor="transparent"
         barStyle="light-content"
       />
-       <Loader visible={loading} />
-        {showAlertModal && 
-          <AlertModal
-            visible={showAlertModal}
-            title={alertTitle}
-            onOkPress={()=> {
-              setAlertTitle('')
-              setShowAlertModal(false)
-            }}
-          />
-         }
+      <Loader visible={loading} />
+      {showAlertModal &&
+        <AlertModal
+          visible={showAlertModal}
+          title={alertTitle}
+          onOkPress={() => {
+            setAlertTitle('')
+            setShowAlertModal(false)
+          }}
+        />
+      }
 
       {/* Full-screen tree background */}
       <Image source={Images.img_tree} style={styles.treeBackground} />
@@ -183,16 +198,16 @@ const OtpVerification = ({ navigation, route }: any) => {
                   blurType="light"
                   blurAmount={1}
                 />
-               ) : (
-                  <View style={styles.androidBlurWrapper}>
-                    <Image
-                      source={Images.img_tree} // same as your main background
-                      style={styles.androidBlurImage}
-                      blurRadius={25}          // adjust for more blur
-                    />
-                    <View style={styles.androidOverlay} />
-                  </View>
-               )}             
+              ) : (
+                <View style={styles.androidBlurWrapper}>
+                  <Image
+                    source={Images.img_tree} // same as your main background
+                    style={styles.androidBlurImage}
+                    blurRadius={25}          // adjust for more blur
+                  />
+                  <View style={styles.androidOverlay} />
+                </View>
+              )}
               <Text style={styles.loginText}>
                 {StringConstants.OTP_VERIFICATION}
               </Text>
@@ -203,14 +218,14 @@ const OtpVerification = ({ navigation, route }: any) => {
                 </Text>
               </Text>
 
-              <View style={[styles.root, { marginBottom: error ? 0 : 35}]}>
+              <View style={[styles.root, { marginBottom: error ? 0 : 35 }]}>
                 <CodeField
                   ref={ref}
                   {...props}
                   value={value}
                   onChangeText={(text) => {
-                      if (!touched) setTouched(true); // first user interaction
-                      setValue(text);
+                    if (!touched) setTouched(true); // first user interaction
+                    setValue(text);
                   }}
                   cellCount={CELL_COUNT}
                   rootStyle={styles.codeFieldRoot}

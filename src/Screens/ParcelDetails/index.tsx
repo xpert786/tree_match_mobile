@@ -13,7 +13,8 @@ import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
 import { Fonts } from '../../Theme/Fonts';
 import { BarChart } from 'react-native-chart-kit';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 import { capitalize } from '../../Theme/Helper';
 const screenWidth = Dimensions.get("window").width;
 
@@ -168,7 +169,11 @@ const ParcelDetails = ({ route }: any) => {
         />
         <Pressable style={styles.IIcon}
           onPress={() => {
-            Toast.success(parcelData?.soil_description)
+            // Toast.success(parcelData?.soil_description)
+            Toast.show({
+              type: 'success',
+              text1: parcelData?.soil_description
+            });
           }}>
           <Image source={Images.ic_i_icon} />
         </Pressable>

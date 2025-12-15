@@ -13,7 +13,8 @@ import { postRequest, getRequest } from '../../Network/apiClient';
 import { ApiConstants } from '../../Theme/ApiConstants';
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 
 const formatDate = (isoDate: string) => {
   if (!isoDate) return "";
@@ -173,7 +174,12 @@ const AssignToParcel = ({ route }: any) => {
     setLoading(false);
 
     if (response?.status === 200 || response?.status === 201) {
-       Toast.success('Planting date set successfully!'); 
+      //  Toast.success('Planting date set successfully!'); 
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: 'Planting date set successfully!'
+      });
       setTimeout(() => {
         navigate(ScreenConstants.PLANTING_TIPS, {
           parcelId: parcelId,

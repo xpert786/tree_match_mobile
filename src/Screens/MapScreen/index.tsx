@@ -18,7 +18,8 @@ import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
 import Voice, { SpeechResultsEvent, SpeechErrorEvent } from '@react-native-voice/voice';
 import { useOfflineDownloads } from '../../Context/OfflineDownloadsContext';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
+import Toast from 'react-native-toast-message';
 
 
 const soilLegend = [
@@ -33,7 +34,7 @@ const soilLegend = [
 ];
 
 
-const MapScreen = ({route}: any) => {
+const MapScreen = ({ route }: any) => {
   const mapRef = useRef<MapView>(null);
 
 
@@ -225,7 +226,11 @@ const MapScreen = ({route}: any) => {
 
   const downloadParcelInAsync = () => {
     if (!soilData) {
-      Toast.warn("No parcel data available to download");
+      // Toast.warn("No parcel data available to download");
+      Toast.show({
+        type: 'info',
+        text1: 'No parcel data available to download',
+      });
       return;
     }
 
@@ -247,10 +252,19 @@ const MapScreen = ({route}: any) => {
 
 
     if (isDownloaded(parcelToSave.id)) {
-      Toast.warn("This parcel is already downloaded");
+      // Toast.warn("This parcel is already downloaded");
+      Toast.show({
+        type: 'info',
+        text1: 'Parcel already downloaded',
+      });
     } else {
       addDownload(parcelToSave);
-      Toast.success("Parcel saved for offline use");
+      // Toast.success("Parcel saved for offline use");
+      Toast.show({
+        type: 'success',
+        text1: 'Success',
+        text2: 'Parcel saved for offline use'
+      });
     }
   }
 
@@ -476,7 +490,7 @@ const MapScreen = ({route}: any) => {
                 if (!search) return
                 else restApiToGeocode()
               }}
-            tapOnRightIcon={handleVoiceSearch}
+              tapOnRightIcon={handleVoiceSearch}
             />
             <View style={styles.line} />
             <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
@@ -698,7 +712,7 @@ const MapScreen = ({route}: any) => {
               <Image source={Images.ic_i_icon} />
             </Pressable> */}
 
-            {/* Search box at the bottom */} 
+            {/* Search box at the bottom */}
             <View style={styles.textInputContainer}>
               <SearchInput
                 value={search}

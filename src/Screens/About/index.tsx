@@ -258,7 +258,7 @@ const About = ({ route }: Props) => {
         <View style={styles.treeView}>
           <View style={styles.topView}>
             <Text style={styles.treeName} numberOfLines={1}>
-              {scientificName}
+              {treeName}
             </Text>
             {/* <View style={styles.rightIcons}>
               <TouchableOpacity onPress={handleRefresh}>
@@ -272,7 +272,7 @@ const About = ({ route }: Props) => {
           <View style={styles.treeDetailsView}>
             <View style={styles.leftDetailsView}>
               <Text style={styles.name}>
-                {treeName}
+                {scientificName}
               </Text>
               <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={styles.title}>AGE</Text>

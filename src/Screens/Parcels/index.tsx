@@ -15,8 +15,9 @@ import { deleteRequest, getRequest, patchRequest } from '../../Network/apiClient
 import Loader from '../../Modal/Loader';
 import AlertModal from '../../Modal/AlertModal';
 import { useOfflineDownloads } from '../../Context/OfflineDownloadsContext';
-import { Toast } from 'toastify-react-native';
+// import { Toast } from 'toastify-react-native';
 import { Fonts } from '../../Theme/Fonts';
+import Toast from 'react-native-toast-message';
 
 const Parcels = () => {
     const { addDownload, isDownloaded } = useOfflineDownloads();
@@ -501,10 +502,19 @@ const Parcels = () => {
                       else if (opt === 'Download') {
                         console.log('Download parcel:', item.id);
                          if (isDownloaded(item.id)) {
-                            Toast.warn("Parcel already downloaded");
+                            // Toast.warn("Parcel already downloaded");
+                            Toast.show({
+                            type: 'info',
+                            text1: 'Parcel already downloaded',
+                          });
                           } else {
                             addDownload(item);
-                            Toast.success("Parcel saved for offline use");
+                            // Toast.success("Parcel saved for offline use");
+                            Toast.show({
+                                type: 'success',
+                                text1: 'Success',
+                                text2: 'Parcel saved for offline use'
+                              });
                           }
                       }
                     }}
